@@ -1,0 +1,17 @@
+default:
+    autoload:
+        '': "%paths.base%/features/bootstrap"
+
+domain:
+    suites:
+        default:
+            contexts: [ Domain\FeatureContext ]
+            filters:
+                tags: ~@e2e
+
+e2e:
+    suites:
+        default:
+            contexts: [ E2E\FeatureContext ]
+            filters:
+                tags: "@e2e"

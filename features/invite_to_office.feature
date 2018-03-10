@@ -3,12 +3,10 @@ Feature: Invite to office for foods and drinks
   - Read the full list of customers and output the names and user ids of matching customers (within 100km).
   - Sorted by User ID (ascending).
 
-  Background:
+  Scenario: Invite for food and drinks for customers within 100km
     Given the minimum distance to the office in km for the invitation is 100
     And the dublin office is on latitude "53.339428" and longitude "-6.257664"
-
-  Scenario: Invite for food and drinks for customers within 100km
-    Given I have the following customers:
+    And I have the following customers:
       | User id | Name              | Latitude   | Longitude  |
       | 12      | Christina McArdle | 52.986375  | -6.043701  |
       | 39      | Lisa Ahearn       | 53.0033946 | -6.3877505 |
@@ -19,7 +17,21 @@ Feature: Invite to office for foods and drinks
       | 12      | Christina McArdle |
       | 39      | Lisa Ahearn       |
 
-  Scenario: No customers withing 100km for invitation
-    Given I have a list with customers with distance more than 100km
+  Scenario: No customers within 100km for invitation
+    Given the minimum distance to the office in km for the invitation is 100
+    And the dublin office is on latitude "53.339428" and longitude "-6.257664"
+    And I have a list with customers with distance more than 100km
     When I prepare my invitation list
     Then I should receive no customer
+
+  @e2e
+  Scenario: Input file is not on expected format
+    Given I have a wrong format customers list
+    When I prepare my invitation list
+    Then I should receive an error that the format is wrong
+
+  @e2e
+  Scenario: Input file not found
+    Given I have a wrong file path
+    When I prepare my invitation list
+    Then I should receive an error that the file is not found

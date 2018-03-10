@@ -1,8 +1,8 @@
 <?php
 
+namespace Domain;
+
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use OfficeInvitation\Customer;
 use OfficeInvitation\InviteListService;
@@ -16,22 +16,18 @@ class FeatureContext implements Context
      * @var array|Customer[]
      */
     private $customers;
-
     /**
      * @var float
      */
     private $minimumDistance;
-
     /**
      * @var float
      */
     private $officeLatitude;
-
     /**
      * @var float
      */
     private $officeLongitude;
-
     /**
      * @var array|Customer[]
      */
