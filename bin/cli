@@ -6,6 +6,7 @@ require __DIR__.'/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Yaml\Yaml;
+use Framework\InviteCommand;
 
 $configDirectory = array(__DIR__.'/../config');
 
@@ -15,6 +16,6 @@ $yamlUserFiles = $fileLocator->locate('config.yml', null, true);
 $configValues = Yaml::parse(file_get_contents($yamlUserFiles));
 
 $application = new Application();
-$application->add(new Framework\InviteCommand($configValues));
+$application->add(new InviteCommand($configValues));
 
 $application->run();

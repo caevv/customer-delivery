@@ -14,9 +14,9 @@ class FileCustomerRepository implements CustomerRepository
      */
     public function fetchCustomersFromFile(string $filePath): array
     {
-        try {
-            $file = file_get_contents($filePath);
-        } catch (\Exception $throwable) {
+        $file = @file_get_contents($filePath);
+
+        if ($file === false) {
             throw new FileNotFoundException($filePath);
         }
 
