@@ -1,7 +1,7 @@
 # Customer Office Invitation
 
 ## How to run
-
+- Run `composer install`
 - Run `make prepare-invite` for reading the customers from customers.txt and then reading the list.
 - To run in production use `./bin/cli prepare-invite [file path]`
 
